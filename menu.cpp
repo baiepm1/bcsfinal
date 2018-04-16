@@ -20,56 +20,73 @@ void computerProgrammingInCpp()
 		cout << "input failed" << endl;
 	}
 
-	do{
-	system("Color 2B");
-	system("CLS");
-	gotoxy(50, 9);
-	cout << " Reward Program Members Menu\n";
-	gotoxy(50, 10);
-	cout << " ====================================\n";
-	gotoxy(50, 11);
-	cout << " 1. Display List\n";
-	gotoxy(50, 12);
-	cout << " 2. Add New Member\n";
-	gotoxy(50, 13);
-	cout << " 3. Delete Member\n";
-	gotoxy(50, 14);
-	cout << " 4. Find Member\n";
-	gotoxy(50, 15);
-	cout << " 5. Exit\n";
-	gotoxy(50, 17);
-	cout << " ====================================\n";
-	gotoxy(50, 18);
-	cout << " Enter your selection: ";
-	cin >> selection;
-	cout << endl;
-
-
-	switch (selection)
-	{
-	case '1':
-		
-		break;
-
-	case '2':
-		
-		break;
-	case '3':
-		
-		break;
-	case '4':
-
-		break;
-	case '5':
-		cout << "Goodbye.\n";
-		return;
-
-	default: cout << selection << " is not a valid menu item.\n";
-
+	do {
+		system("Color 2B");
+		system("CLS");
+		gotoxy(50, 9);
+		cout << " Reward Program Members Menu\n";
+		gotoxy(50, 10);
+		cout << " ====================================\n";
+		gotoxy(50, 11);
+		cout << " 1. Display List\n";
+		gotoxy(50, 12);
+		cout << " 2. Add New Member\n";
+		gotoxy(50, 13);
+		cout << " 3. Delete Member\n";
+		gotoxy(50, 14);
+		cout << " 4. Find Member\n";
+		gotoxy(50, 15);
+		cout << " 5. Exit\n";
+		gotoxy(50, 17);
+		cout << " ====================================\n";
+		gotoxy(50, 18);
+		cout << " Enter your selection: ";
+		cin >> selection;
 		cout << endl;
-	}
 
-} while (selection != 6);
+
+		switch (selection)
+		{
+		case '1':
+			system("Color 2B");
+			system("CLS");
+			gotoxy(50, 9);
+			cout << "Rewards Member List:" << endl;
+
+
+			break;
+
+		case '2':
+			system("Color 2B");
+			system("CLS");
+			gotoxy(50, 9);
+			cout << "Add Rewards Member Below:" << endl;
+
+			break;
+		case '3':
+			system("Color 2B");
+			system("CLS");
+			gotoxy(50, 9);
+			cout << "Delete Rewards Member Below:" << endl;
+
+			break;
+		case '4':
+			system("Color 2B");
+			system("CLS");
+			gotoxy(50, 9);
+			cout << "Search Rewards Member:" << endl;
+			
+			break;
+		case '5':
+			cout << "Goodbye.\n";
+			return;
+
+		default: cout << selection << " is not a valid menu item.\n";
+
+			cout << endl;
+		}
+
+	} while (selection != 6);
 }
 
 
@@ -93,7 +110,7 @@ void javaProgramming()
 		gotoxy(50, 13);
 		cout << " 3. Delete Flight\n";
 		gotoxy(50, 14);
-		cout << " 4. Find Flight List\n";
+		cout << " 4. Find Flight\n";
 		gotoxy(50, 15);
 		cout << " 5. Exit\n";
 		gotoxy(50, 17);
@@ -107,16 +124,32 @@ void javaProgramming()
 		switch (selection)
 		{
 		case '1':
+			system("Color 2B");
+			system("CLS");
+			gotoxy(50, 9);
+			cout << "Domestic Flight List:" << endl;
 
 			break;
 
 		case '2':
+			system("Color 2B");
+			system("CLS");
+			gotoxy(50, 9);
+			cout << "Add Flight Below:" << endl;
 
 			break;
 		case '3':
-		
+			system("Color 2B");
+			system("CLS");
+			gotoxy(50, 9);
+			cout << "Delete Flight Below:" << endl;
+
 			break;
 		case '4':
+			system("Color 2B");
+			system("CLS");
+			gotoxy(50, 9);
+			cout << "Find Flight:" << endl;
 
 
 			break;
@@ -173,7 +206,7 @@ void androidProgramming()
 
 			break;
 		case '3':
-				
+
 			break;
 		case '4':
 
