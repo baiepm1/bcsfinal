@@ -93,9 +93,9 @@ void javaProgramming()
 		gotoxy(50, 13);
 		cout << " 3. Delete Flight\n";
 		gotoxy(50, 14);
-		cout << " 3. Find Flight List\n";
+		cout << " 4. Find Flight List\n";
 		gotoxy(50, 15);
-		cout << " 4. Exit\n";
+		cout << " 5. Exit\n";
 		gotoxy(50, 17);
 		cout << " ====================================\n";
 		gotoxy(50, 18);
@@ -152,9 +152,9 @@ void androidProgramming()
 		gotoxy(50, 13);
 		cout << " 3. Delete Flight\n";
 		gotoxy(50, 14);
-		cout << " 3. Find Flight\n";
+		cout << " 4. Find Flight\n";
 		gotoxy(50, 15);
-		cout << " 4. Exit\n";
+		cout << " 5. Exit\n";
 		gotoxy(50, 17);
 		cout << " ====================================\n";
 		gotoxy(50, 18);
