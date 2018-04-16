@@ -52,6 +52,7 @@ void computerProgrammingInCpp()
 			system("CLS");
 			gotoxy(50, 9);
 			cout << "Rewards Member List:" << endl;
+			system("pause");
 
 
 			break;
@@ -61,6 +62,7 @@ void computerProgrammingInCpp()
 			system("CLS");
 			gotoxy(50, 9);
 			cout << "Add Rewards Member Below:" << endl;
+			system("pause");
 
 			break;
 		case '3':
@@ -68,6 +70,7 @@ void computerProgrammingInCpp()
 			system("CLS");
 			gotoxy(50, 9);
 			cout << "Delete Rewards Member Below:" << endl;
+			system("pause");
 
 			break;
 		case '4':
@@ -75,6 +78,7 @@ void computerProgrammingInCpp()
 			system("CLS");
 			gotoxy(50, 9);
 			cout << "Search Rewards Member:" << endl;
+			system("pause");
 			
 			break;
 		case '5':
@@ -128,6 +132,7 @@ void javaProgramming()
 			system("CLS");
 			gotoxy(50, 9);
 			cout << "Domestic Flight List:" << endl;
+			system("pause");
 
 			break;
 
@@ -136,6 +141,7 @@ void javaProgramming()
 			system("CLS");
 			gotoxy(50, 9);
 			cout << "Add Flight Below:" << endl;
+			system("pause");
 
 			break;
 		case '3':
@@ -143,6 +149,7 @@ void javaProgramming()
 			system("CLS");
 			gotoxy(50, 9);
 			cout << "Delete Flight Below:" << endl;
+			system("pause");
 
 			break;
 		case '4':
@@ -150,6 +157,7 @@ void javaProgramming()
 			system("CLS");
 			gotoxy(50, 9);
 			cout << "Find Flight:" << endl;
+			system("pause");
 
 
 			break;
@@ -199,16 +207,36 @@ void androidProgramming()
 		switch (selection)
 		{
 		case '1':
+			system("Color 2B");
+			system("CLS");
+			gotoxy(50, 9);
+			cout << "International Flight List:" << endl;
+			system("pause");
 
 			break;
 
 		case '2':
+			system("Color 2B");
+			system("CLS");
+			gotoxy(50, 9);
+			cout << "Add Flight Below:" << endl;
+			system("pause");
 
 			break;
 		case '3':
+			system("Color 2B");
+			system("CLS");
+			gotoxy(50, 9);
+			cout << "Delete Flight Below:" << endl;
+			system("pause");
 
 			break;
 		case '4':
+			system("Color 2B");
+			system("CLS");
+			gotoxy(50, 9);
+			cout << "Find Flight:" << endl;
+			system("pause");
 
 
 			break;
