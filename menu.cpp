@@ -87,12 +87,14 @@ void javaProgramming()
 		gotoxy(50, 10);
 		cout << " ====================================\n";
 		gotoxy(50, 11);
-		cout << " 1. Register For Flight \n";
+		cout << " 1. Display Flights \n";
 		gotoxy(50, 12);
-		cout << " 2. Flight Price List\n";
+		cout << " 2. Add Flight\n";
 		gotoxy(50, 13);
-		cout << " 3. Flight Time List\n";
+		cout << " 3. Delete Flight\n";
 		gotoxy(50, 14);
+		cout << " 3. Find Flight List\n";
+		gotoxy(50, 15);
 		cout << " 4. Exit\n";
 		gotoxy(50, 17);
 		cout << " ====================================\n";
@@ -112,10 +114,13 @@ void javaProgramming()
 
 			break;
 		case '3':
+		
+			break;
+		case '4':
 
 
 			break;
-		case '4':
+		case '5':
 			cout << "Goodbye.\n";
 			return;
 
@@ -141,12 +146,14 @@ void androidProgramming()
 		gotoxy(50, 10);
 		cout << " ====================================\n";
 		gotoxy(50, 11);
-		cout << " 1. Register For Flight \n";
+		cout << " 1. Display Flights \n";
 		gotoxy(50, 12);
-		cout << " 2. Flight Price List\n";
+		cout << " 2. Add Flight\n";
 		gotoxy(50, 13);
-		cout << " 3. Flight Time List\n";
+		cout << " 3. Delete Flight\n";
 		gotoxy(50, 14);
+		cout << " 3. Find Flight\n";
+		gotoxy(50, 15);
 		cout << " 4. Exit\n";
 		gotoxy(50, 17);
 		cout << " ====================================\n";
@@ -166,10 +173,13 @@ void androidProgramming()
 
 			break;
 		case '3':
+				
+			break;
+		case '4':
 
 
 			break;
-		case '4':
+		case '5':
 			cout << "Goodbye.\n";
 			return;
 
