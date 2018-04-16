@@ -77,57 +77,109 @@ void javaProgramming()
 {
 	system("Color 2B");
 	system("CLS");
-	gotoxy(50, 9);
-	cout << "***************************************************************" << endl;
-	gotoxy(50, 10);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 11);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 12);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 13);
-	cout << "*                      Java Programming                       *" << endl;
-	gotoxy(50, 14);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 15);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 16);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 17);
-	cout << "***************************************************************" << endl;
-	gotoxy(50, 18);
-	system("PAUSE");
+	char selection;
 
+	do {
+		system("Color 2B");
+		system("CLS");
+		gotoxy(50, 9);
+		cout << " Available Flights: Domestic\n";
+		gotoxy(50, 10);
+		cout << " ====================================\n";
+		gotoxy(50, 11);
+		cout << " 1. Register For Flight \n";
+		gotoxy(50, 12);
+		cout << " 2. Flight Price List\n";
+		gotoxy(50, 13);
+		cout << " 3. Flight Time List\n";
+		gotoxy(50, 14);
+		cout << " 4. Exit\n";
+		gotoxy(50, 17);
+		cout << " ====================================\n";
+		gotoxy(50, 18);
+		cout << " Enter your selection: ";
+		cin >> selection;
+		cout << endl;
+
+
+		switch (selection)
+		{
+		case '1':
+
+			break;
+
+		case '2':
+
+			break;
+		case '3':
+
+
+			break;
+		case '4':
+			cout << "Goodbye.\n";
+			return;
+
+		default: cout << selection << " is not a valid menu item.\n";
+
+			cout << endl;
+		}
+
+	} while (selection != 6);
 }
-
 
 void androidProgramming()
 {
 	system("Color 2B");
 	system("CLS");
-	gotoxy(50, 9);
-	cout << "***************************************************************" << endl;
-	gotoxy(50, 10);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 11);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 12);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 13);
-	cout << "*                     Android Programming                     *" << endl;
-	gotoxy(50, 14);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 15);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 16);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 17);
-	cout << "***************************************************************" << endl;
-	gotoxy(50, 18);
-	system("PAUSE");
+	char selection;
 
+	do {
+		system("Color 2B");
+		system("CLS");
+		gotoxy(50, 9);
+		cout << " Available Flights: International\n";
+		gotoxy(50, 10);
+		cout << " ====================================\n";
+		gotoxy(50, 11);
+		cout << " 1. Register For Flight \n";
+		gotoxy(50, 12);
+		cout << " 2. Flight Price List\n";
+		gotoxy(50, 13);
+		cout << " 3. Flight Time List\n";
+		gotoxy(50, 14);
+		cout << " 4. Exit\n";
+		gotoxy(50, 17);
+		cout << " ====================================\n";
+		gotoxy(50, 18);
+		cout << " Enter your selection: ";
+		cin >> selection;
+		cout << endl;
+
+
+		switch (selection)
+		{
+		case '1':
+
+			break;
+
+		case '2':
+
+			break;
+		case '3':
+
+
+			break;
+		case '4':
+			cout << "Goodbye.\n";
+			return;
+
+		default: cout << selection << " is not a valid menu item.\n";
+
+			cout << endl;
+		}
+
+	} while (selection != 6);
 }
-
 
 void iosProgramming()
 {
