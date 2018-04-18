@@ -8,45 +8,45 @@
 
 using namespace std;
 /*void fillList(string filename, memberList list){			//this doesnt work right now idk
-	//fill the list from the file
-	//increment length to current
-	ifstream memberin(filename);
-	string tempf, templ, tempid, tempmiles;;
-	while (!memberin.eof())
-	{
-		getline(memberin, tempf, ',');
-		getline(memberin, templ, ',');
-		getline(memberin, tempid, ',');
-		getline(memberin, tempmiles, '\n');
-		cout << tempf << "+" << templ << "+" << tempid << "+" << tempmiles << "+" << endl;
-		cout << list.getLength() << endl;
-		list.insertItem(tempf, templ, tempid, tempmiles);
-		cout << list.getLength() << endl;
-		system("pause");
-	}
+//fill the list from the file
+//increment length to current
+ifstream memberin(filename);
+string tempf, templ, tempid, tempmiles;;
+while (!memberin.eof())
+{
+getline(memberin, tempf, ',');
+getline(memberin, templ, ',');
+getline(memberin, tempid, ',');
+getline(memberin, tempmiles, '\n');
+cout << tempf << "+" << templ << "+" << tempid << "+" << tempmiles << "+" << endl;
+cout << list.getLength() << endl;
+list.insertItem(tempf, templ, tempid, tempmiles);
+cout << list.getLength() << endl;
+system("pause");
+}
 }
 */
 
 void writeToMembers(string firstName, string lastName, string id, string miles, string fileName) {	//adds user input to last line in file
-	//Creating and openning file to write using fstream::out
+																									//Creating and openning file to write using fstream::out
 	std::fstream fs(fileName, std::ios::in | std::ios::out | std::ios::ate);
-		fs << endl << firstName << "," << lastName << "," << id << "," << miles;
-		fs.close();
-	
+	fs << endl << firstName << "," << lastName << "," << id << "," << miles;
+	fs.close();
+
 }
-void rewriteToMembers(string fileName, memberList list ){	//idk how to delete one thing so i just made the function rewrite file
+void rewriteToMembers(string fileName, memberList list) {	//idk how to delete one thing so i just made the function rewrite file
 	ofstream fs(fileName);
 	fs << list.showfname(0) << "," << list.showlname(0) << "," << list.showid(0) << "," << list.showmiles(0);	//writes the first line of file
-	for (int i = 1; i < list.getLength(); i++){			//keeps writing to file until the array list is empty
+	for (int i = 1; i < list.getLength(); i++) {			//keeps writing to file until the array list is empty
 		fs << endl << list.showfname(i) << "," << list.showlname(i) << "," << list.showid(i) << "," << list.showmiles(i);	//writes the rest
 	}
-		fs.close();
+	fs.close();
 }
 
 void subMenuMember()
 {
 	char selection;
-	memberList list;
+	memberList memList;
 	string member = "members.txt";
 	ifstream memberin(member);
 
@@ -67,10 +67,10 @@ void subMenuMember()
 		getline(memberin, templ, ',');
 		getline(memberin, tempid, ',');
 		getline(memberin, tempmiles, '\n');
-		list.insertItem(tempf, templ, tempid, tempmiles);
+		memList.insertItem(tempf, templ, tempid, tempmiles);
 	}
-	
-	do{
+
+	do {
 		system("Color 2B");
 		system("CLS");
 		gotoxy(50, 9);
@@ -94,15 +94,15 @@ void subMenuMember()
 		cin >> selection;
 		cout << endl;
 
-	
+
 		switch (selection)
 		{
 		case '1':
-			list.dispalyList();
+			memList.dispalyList();
 			system("pause");
 			break;
 
-		case '2':{
+		case '2': {
 			string first;
 			string last;
 			string id;
@@ -119,27 +119,27 @@ void subMenuMember()
 			gotoxy(50, 24);
 			cout << "Type miles traveled: ";
 			cin >> miles;
-			list.insertItem(first, last, id, miles);
+			memList.insertItem(first, last, id, miles);
 			writeToMembers(first, last, id, miles, member);
 			break;
 		}
-		case '3':{
+		case '3': {
 			string id;
 			gotoxy(50, 21);
 			cout << "Type id number of the member you want to delete: ";
 			cin >> id;
-			list.deleteItem(id);
-			rewriteToMembers(member, list);
+			memList.deleteItem(id);
+			rewriteToMembers(member, memList);
 			break;
 		}
-		case '4':{
-				 string id;
-				 gotoxy(50, 21);
-				 cout << "Type id number of the member you want to find: ";
-				 cin >> id;
-				 gotoxy(50, 22);
-				 list.findNum(id);
-				 break;
+		case '4': {
+			string id;
+			gotoxy(50, 21);
+			cout << "Type id number of the member you want to delete: ";
+			cin >> id;
+			memList.deleteItem(id);
+			rewriteToMembers(member, memList);
+			break;
 		}
 		case '5':
 			cout << "Goodbye.\n";
@@ -157,6 +157,31 @@ void subMenuMember()
 void subMenuDomestic()
 {
 	char selection;
+	memberList domList;
+	string member = "domestic.txt";
+	ifstream memberin(member);
+
+	//check if inputting file failed
+	if (!memberin)
+	{
+		cout << "input failed" << endl;
+	}
+
+	//fillList(member, list);
+	//fill the list from the file
+	//increment length to current
+	//ifstream memberin(filename);
+	string tempf, templ, tempid, tempmiles;;
+	while (!memberin.eof())					//fill the array with file until file is empty
+	{
+		getline(memberin, tempf, ',');
+		getline(memberin, templ, ',');
+		getline(memberin, tempid, ',');
+		getline(memberin, tempmiles, '\n');
+		domList.insertItem(tempf, templ, tempid, tempmiles);
+	}
+
+	
 
 	do {
 		system("Color 3B");
@@ -186,19 +211,53 @@ void subMenuDomestic()
 		switch (selection)
 		{
 		case '1':
-
+			domList.dispalyList();
+			system("pause");
 			break;
 
 		case '2':
+		{string domesticDest;
+		string departureDestdom;
+		string depatTimedom;
+		string arriveTimedom;
+		gotoxy(50, 21);
+		cout << "Enter Domestic Destination: ";
+		cin >> domesticDest;
+		gotoxy(50, 22);
+		cout << "Enter City of Departure: ";
+		cin >> departureDestdom;
+		gotoxy(50, 23);
+		cout << "Enter Departure Time: ";
+		cin >> depatTimedom;
+		gotoxy(50, 24);
+		cout << "Enter Arrival Time: ";
+		cin >> arriveTimedom;
+		domList.insertItem(domesticDest, departureDestdom, depatTimedom, arriveTimedom);
+		writeToMembers(domesticDest, departureDestdom, depatTimedom, arriveTimedom, member);
+		break;}
 
-			break;
+			
 		case '3':
+		{string domesticDest;
+		gotoxy(50, 21);
+		cout << "Delete Domestic Flight From Schedule ";
+		cin >> domesticDest;
+		domList.deleteItem(domesticDest);
+		rewriteToMembers(member, domList);
+		break;}
 
-			break;
+			
 		case '4':
+		
+		{string domesticDest;
+		gotoxy(50, 21);
+		cout << "Find Domestic Flight From ";
+		cin >> domesticDest;
+		domList.deleteItem(domesticDest);
+		rewriteToMembers(member, domList);
+		break;}
 
-
-			break;
+			
 		case '5':
 			cout << "Goodbye.\n";
 			return;
@@ -214,6 +273,29 @@ void subMenuDomestic()
 void subMenuInternational()
 {
 	char selection;
+	memberList intList;
+	string member = "international.txt";
+	ifstream memberin(member);
+
+	//check if inputting file failed
+	if (!memberin)
+	{
+		cout << "input failed" << endl;
+	}
+
+	//fillList(member, list);
+	//fill the list from the file
+	//increment length to current
+	//ifstream memberin(filename);
+	string tempf, templ, tempid, tempmiles;;
+	while (!memberin.eof())					//fill the array with file until file is empty
+	{
+		getline(memberin, tempf, ',');
+		getline(memberin, templ, ',');
+		getline(memberin, tempid, ',');
+		getline(memberin, tempmiles, '\n');
+		intList.insertItem(tempf, templ, tempid, tempmiles);
+	}
 
 	do {
 		system("Color 4B");
@@ -243,19 +325,51 @@ void subMenuInternational()
 		switch (selection)
 		{
 		case '1':
-
+		{intList.dispalyList();
+		system("pause");}
 			break;
 
 		case '2':
+		{string internationalDest;
+		string departureDestint;
+		string depatTimeint;
+		string arriveTimeint;
+		gotoxy(50, 21);
+		cout << "Enter Domestic Destination: ";
+		cin >> internationalDest;
+		gotoxy(50, 22);
+		cout << "Enter City of Departure: ";
+		cin >> departureDestint;
+		gotoxy(50, 23);
+		cout << "Enter Departure Time: ";
+		cin >> depatTimeint;
+		gotoxy(50, 24);
+		cout << "Enter Arrival Time: ";
+		cin >> arriveTimeint;
+		intList.insertItem(internationalDest, departureDestint, depatTimeint, arriveTimeint);
+		writeToMembers(internationalDest, departureDestint, depatTimeint, arriveTimeint, member);
+		break;}
 
-			break;
+			
 		case '3':
+		{string internationalDest;
+		gotoxy(50, 21);
+		cout << "Add International Flight to Schedule ";
+		cin >> internationalDest;
+		intList.deleteItem(internationalDest);
+		rewriteToMembers(member, intList);
+		break;}
 
-			break;
+			
 		case '4':
+		{string internationalDest;
+		gotoxy(50, 21);
+		cout << "Remove International Flight From Schedule ";
+		cin >> internationalDest;
+		intList.deleteItem(internationalDest);
+		rewriteToMembers(member, intList);
+		break;}
 
-
-			break;
 		case '5':
 			cout << "Goodbye.\n";
 			return;
