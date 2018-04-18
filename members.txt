@@ -1,0 +1,5 @@
+peter,baier,1,1738
+nick,laser,2,42069
+dario,idek,3,12345
+smol,boi,5,82828
+big,pat,69,42065
