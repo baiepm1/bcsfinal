@@ -1,18 +1,54 @@
 #include <iostream>
 #include "Utilities.h"
+#include "classHeader.h"
 #include <string>
 #include <cctype>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
+/*void fillList(string filename, memberList list){			//this doesnt work right now idk
+	//fill the list from the file
+	//increment length to current
+	ifstream memberin(filename);
+	string tempf, templ, tempid, tempmiles;;
+	while (!memberin.eof())
+	{
+		getline(memberin, tempf, ',');
+		getline(memberin, templ, ',');
+		getline(memberin, tempid, ',');
+		getline(memberin, tempmiles, '\n');
+		cout << tempf << "+" << templ << "+" << tempid << "+" << tempmiles << "+" << endl;
+		cout << list.getLength() << endl;
+		list.insertItem(tempf, templ, tempid, tempmiles);
+		cout << list.getLength() << endl;
+		system("pause");
+	}
+}
+*/
 
+void writeToMembers(string firstName, string lastName, string id, string miles, string fileName) {	//adds user input to last line in file
+	//Creating and openning file to write using fstream::out
+	std::fstream fs(fileName, std::ios::in | std::ios::out | std::ios::ate);
+		fs << endl << firstName << "," << lastName << "," << id << "," << miles;
+		fs.close();
+	
+}
+void rewriteToMembers(string fileName, memberList list ){	//idk how to delete one thing so i just made the function rewrite file
+	ofstream fs(fileName);
+	fs << list.showfname(0) << "," << list.showlname(0) << "," << list.showid(0) << "," << list.showmiles(0);	//writes the first line of file
+	for (int i = 1; i < list.getLength(); i++){			//keeps writing to file until the array list is empty
+		fs << endl << list.showfname(i) << "," << list.showlname(i) << "," << list.showid(i) << "," << list.showmiles(i);	//writes the rest
+	}
+		fs.close();
+}
 
-
-void computerProgrammingInCpp()
+void subMenuMember()
 {
 	char selection;
-	ifstream memberin;
-	memberin.open("members.txt");
+	memberList list;
+	string member = "members.txt";
+	ifstream memberin(member);
 
 	//check if inputting file failed
 	if (!memberin)
@@ -20,7 +56,21 @@ void computerProgrammingInCpp()
 		cout << "input failed" << endl;
 	}
 
-	do {
+	//fillList(member, list);
+	//fill the list from the file
+	//increment length to current
+	//ifstream memberin(filename);
+	string tempf, templ, tempid, tempmiles;;
+	while (!memberin.eof())					//fill the array with file until file is empty
+	{
+		getline(memberin, tempf, ',');
+		getline(memberin, templ, ',');
+		getline(memberin, tempid, ',');
+		getline(memberin, tempmiles, '\n');
+		list.insertItem(tempf, templ, tempid, tempmiles);
+	}
+	
+	do{
 		system("Color 2B");
 		system("CLS");
 		gotoxy(50, 9);
@@ -37,50 +87,60 @@ void computerProgrammingInCpp()
 		cout << " 4. Find Member\n";
 		gotoxy(50, 15);
 		cout << " 5. Exit\n";
-		gotoxy(50, 17);
+		gotoxy(50, 16);
 		cout << " ====================================\n";
-		gotoxy(50, 18);
+		gotoxy(50, 19);
 		cout << " Enter your selection: ";
 		cin >> selection;
 		cout << endl;
 
-
+	
 		switch (selection)
 		{
 		case '1':
-			system("Color 2B");
-			system("CLS");
-			gotoxy(50, 9);
-			cout << "Rewards Member List:" << endl;
+			list.dispalyList();
 			system("pause");
-
-
 			break;
 
-		case '2':
-			system("Color 2B");
-			system("CLS");
-			gotoxy(50, 9);
-			cout << "Add Rewards Member Below:" << endl;
-			system("pause");
-
+		case '2':{
+			string first;
+			string last;
+			string id;
+			string miles;
+			gotoxy(50, 21);
+			cout << "Type first name: ";
+			cin >> first;
+			gotoxy(50, 22);
+			cout << "Type last name: ";
+			cin >> last;
+			gotoxy(50, 23);
+			cout << "Type id: ";
+			cin >> id;
+			gotoxy(50, 24);
+			cout << "Type miles traveled: ";
+			cin >> miles;
+			list.insertItem(first, last, id, miles);
+			writeToMembers(first, last, id, miles, member);
 			break;
-		case '3':
-			system("Color 2B");
-			system("CLS");
-			gotoxy(50, 9);
-			cout << "Delete Rewards Member Below:" << endl;
-			system("pause");
-
+		}
+		case '3':{
+			string id;
+			gotoxy(50, 21);
+			cout << "Type id number of the member you want to delete: ";
+			cin >> id;
+			list.deleteItem(id);
+			rewriteToMembers(member, list);
 			break;
-		case '4':
-			system("Color 2B");
-			system("CLS");
-			gotoxy(50, 9);
-			cout << "Search Rewards Member:" << endl;
-			system("pause");
-			
-			break;
+		}
+		case '4':{
+				 string id;
+				 gotoxy(50, 21);
+				 cout << "Type id number of the member you want to find: ";
+				 cin >> id;
+				 gotoxy(50, 22);
+				 list.findNum(id);
+				 break;
+		}
 		case '5':
 			cout << "Goodbye.\n";
 			return;
@@ -94,14 +154,12 @@ void computerProgrammingInCpp()
 }
 
 
-void javaProgramming()
+void subMenuDomestic()
 {
-	system("Color 2B");
-	system("CLS");
 	char selection;
 
 	do {
-		system("Color 2B");
+		system("Color 3B");
 		system("CLS");
 		gotoxy(50, 9);
 		cout << " Available Flights: Domestic\n";
@@ -114,7 +172,7 @@ void javaProgramming()
 		gotoxy(50, 13);
 		cout << " 3. Delete Flight\n";
 		gotoxy(50, 14);
-		cout << " 4. Find Flight\n";
+		cout << " 4. Find Flight List\n";
 		gotoxy(50, 15);
 		cout << " 5. Exit\n";
 		gotoxy(50, 17);
@@ -128,36 +186,16 @@ void javaProgramming()
 		switch (selection)
 		{
 		case '1':
-			system("Color 2B");
-			system("CLS");
-			gotoxy(50, 9);
-			cout << "Domestic Flight List:" << endl;
-			system("pause");
 
 			break;
 
 		case '2':
-			system("Color 2B");
-			system("CLS");
-			gotoxy(50, 9);
-			cout << "Add Flight Below:" << endl;
-			system("pause");
 
 			break;
 		case '3':
-			system("Color 2B");
-			system("CLS");
-			gotoxy(50, 9);
-			cout << "Delete Flight Below:" << endl;
-			system("pause");
 
 			break;
 		case '4':
-			system("Color 2B");
-			system("CLS");
-			gotoxy(50, 9);
-			cout << "Find Flight:" << endl;
-			system("pause");
 
 
 			break;
@@ -173,14 +211,12 @@ void javaProgramming()
 	} while (selection != 6);
 }
 
-void androidProgramming()
+void subMenuInternational()
 {
-	system("Color 2B");
-	system("CLS");
 	char selection;
 
 	do {
-		system("Color 2B");
+		system("Color 4B");
 		system("CLS");
 		gotoxy(50, 9);
 		cout << " Available Flights: International\n";
@@ -207,36 +243,16 @@ void androidProgramming()
 		switch (selection)
 		{
 		case '1':
-			system("Color 2B");
-			system("CLS");
-			gotoxy(50, 9);
-			cout << "International Flight List:" << endl;
-			system("pause");
 
 			break;
 
 		case '2':
-			system("Color 2B");
-			system("CLS");
-			gotoxy(50, 9);
-			cout << "Add Flight Below:" << endl;
-			system("pause");
 
 			break;
 		case '3':
-			system("Color 2B");
-			system("CLS");
-			gotoxy(50, 9);
-			cout << "Delete Flight Below:" << endl;
-			system("pause");
 
 			break;
 		case '4':
-			system("Color 2B");
-			system("CLS");
-			gotoxy(50, 9);
-			cout << "Find Flight:" << endl;
-			system("pause");
 
 
 			break;
@@ -250,33 +266,6 @@ void androidProgramming()
 		}
 
 	} while (selection != 6);
-}
-
-void iosProgramming()
-{
-	system("Color 2B");
-	system("CLS");
-	gotoxy(50, 9);
-	cout << "***************************************************************" << endl;
-	gotoxy(50, 10);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 11);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 12);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 13);
-	cout << "*                       IOS Programming                       *" << endl;
-	gotoxy(50, 14);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 15);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 16);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 17);
-	cout << "***************************************************************" << endl;
-	gotoxy(50, 18);
-	system("PAUSE");
-
 }
 
 int validate(string input, string checkType)
@@ -305,71 +294,6 @@ int validate(string input, string checkType)
 	return numoccur;
 
 }
-
-void userInput()
-{
-	system("Color 2B");
-	system("CLS");
-	gotoxy(50, 9);
-	cout << "***************************************************************" << endl;
-	gotoxy(50, 10);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 11);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 12);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 13);
-	cout << "*                       User Input                            *" << endl;
-	gotoxy(50, 14);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 15);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 16);
-	cout << "*                                                             *" << endl;
-	gotoxy(50, 17);
-	cout << "***************************************************************" << endl;
-	gotoxy(50, 18);
-	system("PAUSE");
-	system("cls");
-
-	string firstName, lastName, studentID;
-	int invalidChractersFN = 0, invalidChractersLN = 0, invalidChractersID = 0;;
-
-	int numoccur = 0;
-
-	cout << "Please enter your first name: \n";
-	cin >> firstName;
-	invalidChractersFN = validate(firstName, "isalpha");
-
-	cout << "Please enter our last name: \n";
-	cin >> lastName;
-	invalidChractersLN = validate(lastName, "isalpha");
-
-	cout << "Please enter your student ID #: \n";
-	cin >> studentID;
-	invalidChractersID = validate(studentID, "isdigit");
-
-
-
-	if (invalidChractersFN > 0)
-	{
-		cout << "You have " << invalidChractersFN << " invalid characters in first name" << endl;
-	}
-
-	if (invalidChractersLN > 0)
-	{
-		cout << "You have " << invalidChractersLN << " invalid characters in last name" << endl;
-	}
-
-	if (invalidChractersID > 0)
-	{
-		cout << "You have " << invalidChractersID << " invalid characters in student id" << endl;
-	}
-
-	system("PAUSE");
-
-}
-
 
 void mainMenu()
 {
@@ -403,14 +327,14 @@ void mainMenu()
 		switch (selection)
 		{
 		case '1':
-			computerProgrammingInCpp();
+			subMenuMember();
 			break;
 
 		case '2':
-			javaProgramming();
+			subMenuDomestic();
 			break;
 		case '3':
-			androidProgramming();
+			subMenuInternational();
 			break;
 		case '4':
 			cout << "Goodbye.\n";
@@ -425,4 +349,3 @@ void mainMenu()
 
 
 }
-
