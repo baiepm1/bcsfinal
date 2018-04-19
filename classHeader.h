@@ -3,8 +3,6 @@
 
 using namespace std;
 
-
-
 class memberType{
 public:
 	//Default Constructor (default stuff)
@@ -42,13 +40,14 @@ class memberList
 {
 private:
 	int length;
-	memberType info[50];
+	memberType info[50];	//50=size of array and each file
 public:
 	memberList();
-	bool isEmpty() const;
+	bool isEmpty() const;	
 	bool isFull() const;
 	int getLength();
 	int incLength();
+	//Accessor functions inside a unsorted list
 	string showfname(int index);
 	string showlname(int index);
 	string showid(int index);
