@@ -42,7 +42,7 @@ class memberList
 {
 private:
 	int length;
-	memberType info[10];
+	memberType info[50];
 public:
 	memberList();
 	bool isEmpty() const;
