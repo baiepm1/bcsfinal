@@ -28,7 +28,7 @@ system("pause");
 */
 
 void writeToMembers(string firstName, string lastName, string id, string miles, string fileName) {	//adds user input to last line in file
-																									//Creating and openning file to write using fstream::out
+	//Creating and openning file to write using fstream::out
 	std::fstream fs(fileName, std::ios::in | std::ios::out | std::ios::ate);
 	fs << endl << firstName << "," << lastName << "," << id << "," << miles;
 	fs.close();
@@ -126,7 +126,7 @@ void subMenuMember()
 		case '3': {
 			string id;
 			gotoxy(50, 21);
-			cout << "Type id number of the member you want to delete: ";
+			cout << "Type id number of the member you want to find: ";
 			cin >> id;
 			memList.deleteItem(id);
 			rewriteToMembers(member, memList);
@@ -137,8 +137,8 @@ void subMenuMember()
 			gotoxy(50, 21);
 			cout << "Type id number of the member you want to delete: ";
 			cin >> id;
-			memList.deleteItem(id);
-			rewriteToMembers(member, memList);
+			gotoxy(50, 22);
+			memList.findNum(id);
 			break;
 		}
 		case '5':
@@ -180,8 +180,6 @@ void subMenuDomestic()
 		getline(memberin, tempmiles, '\n');
 		domList.insertItem(tempf, templ, tempid, tempmiles);
 	}
-
-	
 
 	do {
 		system("Color 3B");
@@ -227,37 +225,36 @@ void subMenuDomestic()
 		cout << "Enter City of Departure: ";
 		cin >> departureDestdom;
 		gotoxy(50, 23);
-		cout << "Enter Departure Time: ";
+		cout << "Enter Flight id: ";
 		cin >> depatTimedom;
 		gotoxy(50, 24);
-		cout << "Enter Arrival Time: ";
+		cout << "Enter Departure Time: ";
 		cin >> arriveTimedom;
 		domList.insertItem(domesticDest, departureDestdom, depatTimedom, arriveTimedom);
 		writeToMembers(domesticDest, departureDestdom, depatTimedom, arriveTimedom, member);
-		break;}
+		break; }
 
-			
+
 		case '3':
 		{string domesticDest;
 		gotoxy(50, 21);
-		cout << "Delete Domestic Flight From Schedule ";
+		cout << "Type id of flight you want to delete: ";
 		cin >> domesticDest;
 		domList.deleteItem(domesticDest);
 		rewriteToMembers(member, domList);
-		break;}
+		break; }
 
-			
+
 		case '4':
-		
 		{string domesticDest;
 		gotoxy(50, 21);
-		cout << "Find Domestic Flight From ";
+		cout << "Type id of flight you want to find: ";
 		cin >> domesticDest;
-		domList.deleteItem(domesticDest);
-		rewriteToMembers(member, domList);
-		break;}
+		gotoxy(50, 22);
+		domList.findNum(domesticDest);
+		break; }
 
-			
+
 		case '5':
 			cout << "Goodbye.\n";
 			return;
@@ -326,8 +323,8 @@ void subMenuInternational()
 		{
 		case '1':
 		{intList.dispalyList();
-		system("pause");}
-			break;
+		system("pause"); }
+		break;
 
 		case '2':
 		{string internationalDest;
@@ -341,34 +338,34 @@ void subMenuInternational()
 		cout << "Enter City of Departure: ";
 		cin >> departureDestint;
 		gotoxy(50, 23);
-		cout << "Enter Departure Time: ";
+		cout << "Enter Flight id: ";
 		cin >> depatTimeint;
 		gotoxy(50, 24);
-		cout << "Enter Arrival Time: ";
+		cout << "Enter Depature Time: ";
 		cin >> arriveTimeint;
 		intList.insertItem(internationalDest, departureDestint, depatTimeint, arriveTimeint);
 		writeToMembers(internationalDest, departureDestint, depatTimeint, arriveTimeint, member);
-		break;}
+		break; }
 
-			
+
 		case '3':
 		{string internationalDest;
 		gotoxy(50, 21);
-		cout << "Add International Flight to Schedule ";
+		cout << "Type id of flight you want to delete: ";
 		cin >> internationalDest;
 		intList.deleteItem(internationalDest);
 		rewriteToMembers(member, intList);
-		break;}
+		break; }
 
-			
+
 		case '4':
 		{string internationalDest;
 		gotoxy(50, 21);
-		cout << "Remove International Flight From Schedule ";
+		cout << "Type id of flight you want to find: ";
 		cin >> internationalDest;
-		intList.deleteItem(internationalDest);
-		rewriteToMembers(member, intList);
-		break;}
+		gotoxy(50, 22);
+		intList.findNum(internationalDest);
+		break; }
 
 		case '5':
 			cout << "Goodbye.\n";
