@@ -7,25 +7,6 @@
 #include <sstream>
 
 using namespace std;
-/*void fillList(string filename, memberList list){			//this doesnt work right now idk
-//fill the list from the file
-//increment length to current
-ifstream memberin(filename);
-string tempf, templ, tempid, tempmiles;;
-while (!memberin.eof())
-{
-getline(memberin, tempf, ',');
-getline(memberin, templ, ',');
-getline(memberin, tempid, ',');
-getline(memberin, tempmiles, '\n');
-cout << tempf << "+" << templ << "+" << tempid << "+" << tempmiles << "+" << endl;
-cout << list.getLength() << endl;
-list.insertItem(tempf, templ, tempid, tempmiles);
-cout << list.getLength() << endl;
-system("pause");
-}
-}
-*/
 
 void writeToMembers(string firstName, string lastName, string id, string miles, string fileName) {	//adds user input to last line in file
 	//Creating and openning file to write using fstream::out
@@ -42,7 +23,7 @@ void rewriteToMembers(string fileName, memberList list) {	//idk how to delete on
 	}
 	fs.close();
 }
-
+//----------------------------------------------------MemberMenu-----------------------------------------------------------------//
 void subMenuMember()
 {
 	char selection;
@@ -55,15 +36,13 @@ void subMenuMember()
 	{
 		cout << "input failed" << endl;
 	}
-
-	//fillList(member, list);
 	//fill the list from the file
 	//increment length to current
 	//ifstream memberin(filename);
 	string tempf, templ, tempid, tempmiles;;
-	while (!memberin.eof())					//fill the array with file until file is empty
+	while (!memberin.eof())						//fill the array with file until file is empty
 	{
-		getline(memberin, tempf, ',');
+		getline(memberin, tempf, ',');			
 		getline(memberin, templ, ',');
 		getline(memberin, tempid, ',');
 		getline(memberin, tempmiles, '\n');
@@ -94,15 +73,14 @@ void subMenuMember()
 		cin >> selection;
 		cout << endl;
 
-
 		switch (selection)
 		{
-		case '1':
+		case '1':							//display
 			memList.dispalyList();
 			system("pause");
 			break;
 
-		case '2': {
+		case '2': {							//add new
 			string first;
 			string last;
 			string id;
@@ -119,11 +97,11 @@ void subMenuMember()
 			gotoxy(50, 24);
 			cout << "Type miles traveled: ";
 			cin >> miles;
-			memList.insertItem(first, last, id, miles);
-			writeToMembers(first, last, id, miles, member);
+			memList.insertItem(first, last, id, miles);			//add(first,last,id,miles)
+			writeToMembers(first, last, id, miles, member);		//rewrite to file
 			break;
 		}
-		case '3': {
+		case '3': {							//find
 			string id;
 			gotoxy(50, 21);
 			cout << "Type id number of the member you want to find: ";
@@ -132,7 +110,7 @@ void subMenuMember()
 			rewriteToMembers(member, memList);
 			break;
 		}
-		case '4': {
+		case '4': {							//delete
 			string id;
 			gotoxy(50, 21);
 			cout << "Type id number of the member you want to delete: ";
@@ -141,7 +119,7 @@ void subMenuMember()
 			memList.findNum(id);
 			break;
 		}
-		case '5':
+		case '5':							//exit
 			cout << "Goodbye.\n";
 			return;
 
@@ -149,11 +127,9 @@ void subMenuMember()
 
 			cout << endl;
 		}
-
 	} while (selection != 6);
 }
-
-
+//------------------------------------------------------------DomesticMenu---------------------------------------------------------//
 void subMenuDomestic()
 {
 	char selection;
@@ -167,7 +143,6 @@ void subMenuDomestic()
 		cout << "input failed" << endl;
 	}
 
-	//fillList(member, list);
 	//fill the list from the file
 	//increment length to current
 	//ifstream memberin(filename);
@@ -205,15 +180,14 @@ void subMenuDomestic()
 		cin >> selection;
 		cout << endl;
 
-
 		switch (selection)
 		{
-		case '1':
+		case '1':							//display
 			domList.dispalyList();
 			system("pause");
 			break;
 
-		case '2':
+		case '2':							//add
 		{string domesticDest;
 		string departureDestdom;
 		string depatTimedom;
@@ -230,22 +204,20 @@ void subMenuDomestic()
 		gotoxy(50, 24);
 		cout << "Enter Departure Time: ";
 		cin >> arriveTimedom;
-		domList.insertItem(domesticDest, departureDestdom, depatTimedom, arriveTimedom);
-		writeToMembers(domesticDest, departureDestdom, depatTimedom, arriveTimedom, member);
+		domList.insertItem(domesticDest, departureDestdom, depatTimedom, arriveTimedom);		//add(end,start,id,time)
+		writeToMembers(domesticDest, departureDestdom, depatTimedom, arriveTimedom, member);	//rewrite file
 		break; }
 
-
-		case '3':
+		case '3':							//delete
 		{string domesticDest;
 		gotoxy(50, 21);
 		cout << "Type id of flight you want to delete: ";
 		cin >> domesticDest;
-		domList.deleteItem(domesticDest);
+		domList.deleteItem(domesticDest);			
 		rewriteToMembers(member, domList);
 		break; }
 
-
-		case '4':
+		case '4':							//find
 		{string domesticDest;
 		gotoxy(50, 21);
 		cout << "Type id of flight you want to find: ";
@@ -254,8 +226,7 @@ void subMenuDomestic()
 		domList.findNum(domesticDest);
 		break; }
 
-
-		case '5':
+		case '5':							//delete
 			cout << "Goodbye.\n";
 			return;
 
@@ -263,10 +234,9 @@ void subMenuDomestic()
 
 			cout << endl;
 		}
-
 	} while (selection != 6);
 }
-
+//-------------------------------------------------------------------InternationalMenu-----------------------------------------------------//
 void subMenuInternational()
 {
 	char selection;
@@ -280,7 +250,6 @@ void subMenuInternational()
 		cout << "input failed" << endl;
 	}
 
-	//fillList(member, list);
 	//fill the list from the file
 	//increment length to current
 	//ifstream memberin(filename);
@@ -318,15 +287,14 @@ void subMenuInternational()
 		cin >> selection;
 		cout << endl;
 
-
 		switch (selection)
 		{
-		case '1':
+		case '1':							//display
 		{intList.dispalyList();
 		system("pause"); }
 		break;
 
-		case '2':
+		case '2':							//add
 		{string internationalDest;
 		string departureDestint;
 		string depatTimeint;
@@ -343,12 +311,11 @@ void subMenuInternational()
 		gotoxy(50, 24);
 		cout << "Enter Depature Time: ";
 		cin >> arriveTimeint;
-		intList.insertItem(internationalDest, departureDestint, depatTimeint, arriveTimeint);
-		writeToMembers(internationalDest, departureDestint, depatTimeint, arriveTimeint, member);
+		intList.insertItem(internationalDest, departureDestint, depatTimeint, arriveTimeint);			//add(end,start,id,time)
+		writeToMembers(internationalDest, departureDestint, depatTimeint, arriveTimeint, member);		//rewrite to file
 		break; }
 
-
-		case '3':
+		case '3':							//delete
 		{string internationalDest;
 		gotoxy(50, 21);
 		cout << "Type id of flight you want to delete: ";
@@ -357,8 +324,7 @@ void subMenuInternational()
 		rewriteToMembers(member, intList);
 		break; }
 
-
-		case '4':
+		case '4':							//find
 		{string internationalDest;
 		gotoxy(50, 21);
 		cout << "Type id of flight you want to find: ";
@@ -367,7 +333,7 @@ void subMenuInternational()
 		intList.findNum(internationalDest);
 		break; }
 
-		case '5':
+		case '5':							//exit
 			cout << "Goodbye.\n";
 			return;
 
@@ -378,40 +344,10 @@ void subMenuInternational()
 
 	} while (selection != 6);
 }
-
-int validate(string input, string checkType)
-{
-	int numoccur = 0;
-
-	if (checkType == "isalpha")
-	{
-		for (int x = 0; x < input.length(); x++)
-		{
-			if (!isalpha(input[x]))
-				numoccur++;
-		}
-	}
-
-
-	if (checkType == "isdigit")
-	{
-		for (int x = 0; x < input.length(); x++)
-		{
-			if (!isdigit(input[x]))
-				numoccur++;
-		}
-	}
-
-	return numoccur;
-
-}
-
+//---------------------------------------------------------------------MainMenu--------------------------------------------------------------//
 void mainMenu()
 {
-
-
 	char selection;
-
 	do
 	{
 		system("Color 1A");
@@ -438,14 +374,13 @@ void mainMenu()
 		switch (selection)
 		{
 		case '1':
-			subMenuMember();
+			subMenuMember();		//membermenu
 			break;
-
 		case '2':
-			subMenuDomestic();
+			subMenuDomestic();		//domesticmenu
 			break;
 		case '3':
-			subMenuInternational();
+			subMenuInternational();	//internationalmenu
 			break;
 		case '4':
 			cout << "Goodbye.\n";
@@ -455,8 +390,5 @@ void mainMenu()
 
 			cout << endl;
 		}
-
 	} while (selection != 6);
-
-
 }
