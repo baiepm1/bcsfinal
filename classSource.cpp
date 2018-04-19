@@ -4,7 +4,7 @@
 
 using namespace std;
 
-//--------------------------------------------------memberType-------------------------------------------------------------//
+//--------------------------------------------------memberType----------------------------------------------------------//
 // "::" = scope resolution
 
 //Default Constructor
@@ -55,7 +55,7 @@ void memberType::setmiles(string miles){
 	newMiles = miles;
 }
 
-//--------------------------------------------------------------memberList-------------------------------------------------
+//----------------------------------------------------------memberList-------------------------------------------------
 //O(1)
 memberList::memberList()
 {
@@ -140,6 +140,7 @@ void memberList::findNum(string item){
 	}
 	system("pause");
 }
+//------------------accessor functions------------------//
 string memberList::showfname(int index){
 	return info[index].getfName();
 }
